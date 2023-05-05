@@ -6,7 +6,7 @@ from math import radians
 from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
-CORS(app, resources={r"/*": {"origins": ["http://localhost:3000"]}})
+CORS(app, resources={r"/*": {"origins": ["https://recommender-system-9lr3.onrender.com:3000"]}})
 import psycopg2
 from statistics import mean
 from geopy.distance import distance
