@@ -1,3 +1,4 @@
+
 import psycopg2
 from geopy.distance import distance
 from flask import Flask, request, jsonify
@@ -24,7 +25,8 @@ def get_recommendations(doctor_id, max_distance, max_members):
     groups = c.fetchall()
 
     # Filter the groups based on the baladia being included in the selected_wilaya values of the doctor
-    filtered_groups = [(group_id, baladia, group_lat, group_lng) for group_id, baladia, group_lat, group_lng in groups if baladia in selected_wilaya[0].split(',')]
+    filtered_groups = [(group_id, baladia, group_lat, group_lng) for group_id, baladia, group_lat, group_lng in groups if any(wilaya.strip() == baladia for wilaya in selected_wilaya)]
+
 
     # Calculate the distance between the doctor's location and the centroid of each filtered group
     group_distances = {}
@@ -73,11 +75,11 @@ def get_recommendations(doctor_id, max_distance, max_members):
 
 def get_number_of_patients(group_id):
     # Connect to the database
-    conn = psycopg2.connect(database="db", user="postgres",
-                            password="crb12345", host="localhost", port="5432")
+    conn = psycopg2.connect(database="sihati", user="sihati",
+                            password="Daddy22mars_", host="41.111.206.183", port="5432")
     c = conn.cursor()
-    # Retrieve the number of patients in the group from groups_number table
-    c.execute('SELECT patients_number FROM groups_number WHERE group_id=%s', (group_id,))
+    # Retrieve the number of patients in the group from groups_numbers table
+    c.execute('SELECT patients_number FROM groups_numbers WHERE group_id=%s', (group_id,))
     count = c.fetchone()[0]
     return count
 
@@ -103,4 +105,5 @@ def get_recommendations_endpoint():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5004)
+
 
