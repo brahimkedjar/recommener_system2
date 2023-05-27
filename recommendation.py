@@ -7,8 +7,7 @@ import json
 from math import radians
 from flask_cors import CORS
 app = Flask(__name__)
-CORS(app)
-CORS(app, resources={r"/*": {"origins": ["http://localhost:3000"]}})
+
 import psycopg2
 from statistics import mean
 from geopy.distance import distance
@@ -106,7 +105,7 @@ def get_recommendations_endpoint():
     return jsonify(response)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=500)
+    app.run(host='0.0.0.0')
 
 
 
