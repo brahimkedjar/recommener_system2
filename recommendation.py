@@ -9,6 +9,7 @@ import psycopg2
 from statistics import mean
 from geopy.distance import distance
 app = Flask(__name__)
+CORS(app, origins='*')
 def get_recommendations(doctor_id, max_distance, max_members):
     # Connect to the database
     conn = psycopg2.connect(database="sihati", user="sihati",
