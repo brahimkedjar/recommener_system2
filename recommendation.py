@@ -7,7 +7,7 @@ import json
 from math import radians
 from flask_cors import CORS
 app = Flask(__name__)
-
+CORS(app, origins='*')
 import psycopg2
 from statistics import mean
 from geopy.distance import distance
