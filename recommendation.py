@@ -6,6 +6,7 @@ from flask import Flask, request, jsonify
 import json
 from math import radians
 import psycopg2
+from flask_cors import CORS
 from statistics import mean
 from geopy.distance import distance
 app = Flask(__name__)
