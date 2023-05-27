@@ -6,12 +6,11 @@ from flask import Flask, request, jsonify
 import json
 from math import radians
 from flask_cors import CORS
-app = Flask(__name__)
-CORS(app, origins='*')
 import psycopg2
 from statistics import mean
 from geopy.distance import distance
-
+app = Flask(__name__)
+CORS(app, origins='*')
 def get_recommendations(doctor_id, max_distance, max_members):
     # Connect to the database
     conn = psycopg2.connect(database="sihati", user="sihati",
@@ -86,6 +85,8 @@ def get_number_of_patients(group_id):
 
 
 @app.route('/recommender_patients', methods=['POST'])
+@cross_origin()
+
 def get_recommendations_endpoint():
     data = json.loads(request.data)
     print(data)
