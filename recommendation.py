@@ -14,7 +14,7 @@ CORS(app, origins='*')
 def get_recommendations(doctor_id, max_distance, max_members):
     # Connect to the database
     conn = psycopg2.connect(database="sihati", user="sihati",
-                            password="Daddy22mars_", host="41.111.206.183", port="5432")
+                            password="Daddy22mars_", host="http://sihati.univ-setif.dz", port="5432")
     c = conn.cursor()
     # Retrieve the doctor's specialty and baladia
     c.execute('SELECT specialite, selected_wilaya, latitude, longitude FROM doctors WHERE id=%s', (doctor_id,))
