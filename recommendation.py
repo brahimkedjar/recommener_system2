@@ -75,8 +75,8 @@ def get_recommendations(doctor_id, max_distance, max_members):
 
 def get_number_of_patients(group_id):
     # Connect to the database
-    conn = psycopg2.connect(database="db", user="postgres",
-                            password="crb12345", host="localhost", port="5432")
+    conn = psycopg2.connect(database="sihati", user="sihati",
+                            password="Daddy22mars_", host="41.111.206.183", port="5432")
     c = conn.cursor()
     # Retrieve the number of patients in the group from groups_numbers table
     c.execute('SELECT patients_number FROM groups_numbers WHERE group_id=%s', (group_id,))
