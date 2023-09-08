@@ -13,8 +13,8 @@ app = Flask(__name__)
 CORS(app, origins='*')
 def get_recommendations(doctor_id, max_distance, max_members):
     # Connect to the database
-    conn = psycopg2.connect(database="sihati", user="sihati",
-                            password="Daddy22mars_", host="41.111.206.183", port="5432")
+    conn = psycopg2.connect(database="sihati_hz51", user="sihati_hz51_user",
+                            password="p9PsnEtLE9nAa70l6XzmYDwIcrtv0qcd", host="dpg-cjtddr7hdsdc739tm8e0-a.oregon-postgres.render.com", port="5432")
     c = conn.cursor()
     # Retrieve the doctor's specialty and baladia
     c.execute('SELECT specialite, selected_wilaya, latitude, longitude FROM doctors WHERE id=%s', (doctor_id,))
